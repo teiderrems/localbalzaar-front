@@ -1,0 +1,34 @@
+
+<div class="h-full w-full box-border flex flex-col">
+  <div class="flex-grow  flex overflow-hidden">
+    <div [class.side]="show()" class="hidden w-2/12 md:flex md:flex-col shadow">
+        <nav class="flex flex-col mx-2 space-y-4 text-2xl mt-5 flex-grow">
+          <a routerLink="/dashboard/users" routerLinkActive="active" [class.hidden_a]="show()" class="flex items-center gap-2 rounded-md p-2 border"><mat-icon  class="material-symbols-outlined mb-1 hover:cursor-pointer">group</mat-icon><span [class.hidden_s]="show()" >Users</span></a>
+          <a routerLink="/dashboard/groups" routerLinkActive="active" [class.hidden_a]="show()" class="flex items-center gap-2 rounded-md p-2 border"><mat-icon class="material-symbols-outlined mb-1 hover:cursor-pointer">groups</mat-icon><span [class.hidden_s]="show()">Groups</span></a>
+          <a routerLink="/dashboard/roles" routerLinkActive="active" [class.hidden_a]="show()" class="flex items-center gap-2 rounded-md p-2 border"><mat-icon class="material-symbols-outlined mb-1 hover:cursor-pointer">menu</mat-icon><span [class.hidden_s]="show()" >Roles</span></a>
+        </nav>
+      <section class="bg-red-400">
+        <button>LogOut</button>
+      </section>
+    </div>
+    <div class="flex-1  flex flex-col overflow-y-auto overflow-x-hidden">
+      <div class="h-16 flex">
+        <span class="hidden sm:inline-block place-content-end m-2">
+          @if (show()){
+              <mat-icon (click)="toggle()" class="material-symbols-outlined hover:cursor-pointer">menu</mat-icon>
+          } @else {
+              <mat-icon (click)="toggle()" class="material-symbols-outlined hover:cursor-pointer">menu_open</mat-icon>
+          }
+        </span>
+      </div>
+
+      <main class="flex-grow ml-2 transition ease-in-out duration-100">
+        <router-outlet></router-outlet>
+      </main>
+
+      <footer class=" bg-cyan-400 ml-2 flex flex-wrap justify-center">
+        &copy; 2025
+      </footer>
+    </div>
+  </div>
+</div>

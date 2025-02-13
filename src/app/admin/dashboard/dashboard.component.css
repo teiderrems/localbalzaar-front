@@ -1,0 +1,30 @@
+.side{
+  @apply w-20
+}
+
+img{
+  height: 65px;
+  width: 65px;
+}
+
+.hidden_a{
+  @apply text-xl items-start justify-center gap-0
+}
+
+.hidden_s{
+  @apply hidden
+}
+
+.active{
+  @apply bg-blue-500 text-white
+}
+
+
+
+mat-icon{
+  font-size: 30px;
+}
+
+.tab_link{
+  @apply underline decoration-blue-600
+}

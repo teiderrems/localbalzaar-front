@@ -1,0 +1,35 @@
+<div class="h-full w-full grid sm:grid-cols-8 grid-rows-12 grid-cols-1">
+
+
+  <div class="sm:col-span-3 sm:col-start-2 col-span-1 row-span-3 row-start-2 sm:row-span-10 sm:row-start-2 flex flex-col sm:justify-center justify-end items-center">
+    <img src="logo.png" class="w-3/6 h-3/6 rounded-lg" alt="logo">
+  </div>
+  <div class="sm:col-span-3 sm:col-start-5 col-span-1 row-span-7 row-start-5 flex flex-col items-center justify-center sm:row-span-10 sm:row-start-2">
+    <form [formGroup]="register" appCheckPassword (ngSubmit)="submit()" class=" w-5/6 h-4/6 sm:w-4/6 flex flex-col justify-center">
+      <div class="flex flex-1 space-y-2 flex-col mb-5">
+        <label for="email">Email</label>
+        <input type="email" formControlName="email" class="form-input drop-shadow sm:h-3/5 rounded-md shadow-md placeholder:text-gray-500 placeholder:italic"
+               placeholder="Enter your email address e.g:example@gmail.com" name="email" id="email">
+      </div>
+      <div class="flex flex-1 space-y-2 flex-col mb-5">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" class="form-input drop-shadow sm:h-3/5 rounded-md shadow-md peer placeholder:text-gray-500 placeholder:italic"
+               placeholder="enter your password" name="password" id="password">
+      </div>
+      <div class="flex flex-1 space-y-2 flex-col mb-5">
+        <label for="confirm_password">ConfirmPassword</label>
+        <input type="password" formControlName="confirm_password" class="form-input drop-shadow sm:h-3/5 rounded-md shadow-md peer placeholder:text-gray-500 placeholder:italic"
+               placeholder="confirm your password" name="confirm_password" id="confirm_password">
+      </div>
+      @if (register.hasError('mismatch')&& (register.get('confirm_password')?.touched)) {
+        <p class="text-red-300 text-sm">confirm password must be equal to password thank you</p>
+      }
+      <span>{{register.valid}}</span>
+      <div class="flex flex-1 flex-col items-start mb-2">
+        <button type="submit" [disabled]="register.invalid || isSubmit()" class="rounded-md sm:h-12 w-full border p-2 shadow">Submit</button>
+      </div>
+      <span  class=""> You have an account <a routerLink="/login" class="hover:underline text-blue-500"> SignIn</a></span>
+    </form>
+  </div>
+
+</div>

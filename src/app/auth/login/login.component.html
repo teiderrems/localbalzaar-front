@@ -1,0 +1,32 @@
+<div class="h-full w-full grid sm:grid-cols-8 grid-rows-12 grid-cols-1">
+
+
+  <div class="sm:col-span-3 sm:col-start-2 col-span-1 row-span-3 row-start-2 sm:row-span-10 sm:row-start-2 flex flex-col sm:justify-center justify-end items-center">
+    <img src="logo.png" class="w-3/6 h-3/6 rounded-lg" alt="logo">
+  </div>
+
+  <div class="sm:col-span-3 sm:col-start-5 col-span-1 row-span-7 row-start-6 flex flex-col items-center justify-center sm:row-span-10 sm:row-start-2">
+    <form [formGroup]="login" (ngSubmit)="submit()" ngNativeValidate="ngNativeValidate" class=" w-5/6 h-4/6 sm:w-4/6 flex flex-col justify-center">
+      <div class="flex flex-1 space-y-2 flex-col mb-6">
+          <label for="email">Email</label>
+          <input type="email" formControlName="email" class="form-input drop-shadow sm:h-3/5 rounded-md shadow-md placeholder:text-gray-500 placeholder:italic"
+                 placeholder="Enter your email address e.g:example@gmail.com" name="email" id="email">
+      </div>
+      <div class="flex flex-1 space-y-2 flex-col mb-6">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" class="form-input drop-shadow sm:h-3/5 rounded-md shadow-md peer placeholder:text-gray-500 placeholder:italic"
+               placeholder="enter your password" name="password" id="password">
+      </div>
+      <span class="mb-2"> You are forgot your password? <a routerLink="/register" class="hover:underline text-blue-500"> reset password</a></span>
+      <div class="flex flex-1 flex-col items-start">
+          <button type="submit" [disabled]="login.invalid || isSubmit()" class="rounded-md sm:h-12 w-full border p-2 shadow">Submit</button>
+      </div>
+      <span  class="mb-2"> You didn't have an account <a routerLink="/register" class="hover:underline text-blue-500"> SignUp</a></span>
+      <div class="flex flex-1 items-center flex-col space-y-4">
+        <button class="rounded-md border sm:h-12 w-full p-2 shadow">Google</button>
+        <button class="rounded-md border sm:h-12 w-full p-2 shadow">Facebook</button>
+      </div>
+    </form>
+  </div>
+
+</div>
