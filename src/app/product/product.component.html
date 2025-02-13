@@ -1,64 +1,16 @@
 <div class="h-full w-full flex flex-col overflow-hidden">
-<!--  <div class="h-[100px]">-->
+  <div class="h-[90px] mb-3">
 
-<!--  </div>-->
-<!--  <div class="mat-elevation-z8 h-5/6">-->
-  <table class="table-fixed">
-    <thead class="">
-    <tr class="">
-      <th class="">Id</th>
-      <th class="">Nom</th>
-      <th class="">Price</th>
-      <th class="">Quantity</th>
-      <th class="">Available</th>
-      <th class="">Shop</th>
-      <th class="">CreatedAt</th>
-      <th class="">UpdatedAt</th>
-    </tr>
-    </thead>
-    <tbody class="table-row-group">
-      @defer (prefetch when data()){
-        @for (product of data().data;track product.id){
-          <tr class=" table-row">
-            <td class="table-cell">{{ product.id}}</td>
-            <td class="table-cell">{{ product.name}}</td>
-            <td class="table-cell">{{ product.price | currency:'EUR'}}</td>
-            <td class="table-cell">{{ product.quantity}}</td>
-            <td class="table-cell">{{ product.isAvailable}}</td>
-            <td class="table-cell">{{ product.shop.name}}</td>
-            <td class="table-cell">{{ product.createdAt | date}}</td>
-            <td class="table-cell">{{ product.updatedAt | date}}</td>
-          </tr>
-        }
-      } @loading (after 0){
-        <div class="border border-blue-300 shadow rounded-md p-4 max-w-sm w-full mx-auto">
-          <div class="animate-pulse flex space-x-4">
-            <div class="rounded-full bg-slate-200 h-10 w-10"></div>
-            <div class="flex-1 space-y-6 py-1">
-              <div class="h-2 bg-slate-200 rounded"></div>
-              <div class="space-y-3">
-                <div class="grid grid-cols-3 gap-4">
-                  <div class="h-2 bg-slate-200 rounded col-span-2"></div>
-                  <div class="h-2 bg-slate-200 rounded col-span-1"></div>
-                </div>
-                <div class="h-2 bg-slate-200 rounded"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+  </div>
+  <div class="flex flex-wrap flex-grow justify-center mb-6 mx-auto gap-2 overflow-y-auto scroll-my-4">
+      @for (product of data().data; track product.id) {
+        <nz-card nzHoverable style="width:240px" [nzCover]="coverTemplate">
+          <nz-card-meta [nzTitle]="product.name" [nzDescription]="product.description"></nz-card-meta>
+        </nz-card>
+        <ng-template #coverTemplate>
+          <img alt="example" [src]="product.image!" alt="image"/>
+        </ng-template>
       }
-    </tbody>
-  </table>
-
-
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                   showFirstLastButtons
-                   [pageSize]="limit()"
-                   [length]="total()"
-
-                   aria-label="Select page of periodic elements">
-    </mat-paginator>
   </div>
 
-
-<!--</div>-->
+</div>

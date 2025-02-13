@@ -1,10 +1,9 @@
 import {Component, inject, OnInit, signal} from '@angular/core';
 import {RouterOutlet, Router, RouterLink, RouterLinkActive} from '@angular/router';
-import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [RouterOutlet, MatIconModule, RouterLink, RouterLinkActive,],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive,],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
